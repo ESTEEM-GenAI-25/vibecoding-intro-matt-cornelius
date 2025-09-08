@@ -1,0 +1,185 @@
+export default function SimpleSite() {
+  const nav = [
+    { id: "home", label: "Home" },
+    { id: "about", label: "About" },
+    { id: "projects", label: "Projects" },
+    { id: "contact", label: "Contact" },
+  ];
+
+  const projects = [
+    {
+      title: "Project One",
+      description:
+        "A short description of something cool you built. Replace this with your own project.",
+      link: "#",
+    },
+    {
+      title: "Project Two",
+      description:
+        "Another project highlight. Keep it brief and outcome-focused.",
+      link: "#",
+    },
+    {
+      title: "Project Three",
+      description:
+        "Describe impact, tech used, or the problem it solves.",
+      link: "#",
+    },
+  ];
+
+  return (
+    <div className="min-h-screen scroll-smooth text-slate-800">
+      {/* Header / Nav */}
+      <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/90 border-b">
+        <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+          <a href="#home" className="font-bold text-xl">Matt Cornelius</a>
+          <nav className="hidden md:flex gap-6">
+            {nav.map((n) => (
+              <a
+                key={n.id}
+                href={`#${n.id}`}
+                className="text-sm font-medium hover:text-slate-900 text-slate-600"
+              >
+                {n.label}
+              </a>
+            ))}
+          </nav>
+          <a
+            href="#contact"
+            className="md:inline-block hidden rounded-2xl px-4 py-2 text-sm font-semibold bg-slate-900 text-white hover:opacity-90"
+          >
+            Get in touch
+          </a>
+        </div>
+      </header>
+
+      {/* Hero */}
+      <section id="home" className="bg-gradient-to-b from-white to-slate-100">
+        <div className="mx-auto max-w-6xl px-4 py-24 md:py-28 grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <p className="uppercase tracking-wide text-xs text-slate-500 font-semibold">Welcome</p>
+            <h1 className="mt-2 text-4xl md:text-5xl font-extrabold leading-tight">
+              Building useful things at the intersection of tech & entrepreneurship
+            </h1>
+            <p className="mt-4 text-slate-600 text-base md:text-lg">
+              I’m Matt, a developer and builder. This is a simple, clean one-page site you can
+              customize in seconds—swap text, add your projects, and publish.
+            </p>
+            <div className="mt-6 flex gap-3">
+              <a href="#projects" className="rounded-2xl px-5 py-3 text-sm font-bold bg-slate-900 text-white hover:opacity-90">
+                See projects
+              </a>
+              <a href="#about" className="rounded-2xl px-5 py-3 text-sm font-bold border border-slate-300 hover:bg-white">
+                Learn more
+              </a>
+            </div>
+          </div>
+          <div className="md:justify-self-end">
+            <div className="aspect-[4/3] w-full max-w-lg rounded-2xl bg-white shadow-md border grid place-items-center">
+              <div className="p-8 text-center">
+                <div className="text-6xl">🚀</div>
+                <p className="mt-4 font-semibold">Drop an image or logo here</p>
+                <p className="text-sm text-slate-500">(Replace this box with your hero image)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-20">
+          <h2 className="text-2xl md:text-3xl font-bold">About</h2>
+          <p className="mt-4 text-slate-600 max-w-3xl">
+            I enjoy solving real problems with clean, pragmatic solutions. My background spans
+            software, product, and entrepreneurship. I like shipping quickly, iterating with users,
+            and focusing on outcomes.
+          </p>
+          <div className="mt-8 grid md:grid-cols-3 gap-6">
+            {["Fast", "Reliable", "User-focused"].map((k) => (
+              <div key={k} className="rounded-2xl border bg-white p-6 shadow-sm">
+                <h3 className="font-semibold">{k}</h3>
+                <p className="mt-2 text-sm text-slate-600">
+                  Short blurb explaining how you work and what you value. Keep it simple.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section id="projects" className="bg-slate-50">
+        <div className="mx-auto max-w-6xl px-4 py-20">
+          <h2 className="text-2xl md:text-3xl font-bold">Projects</h2>
+          <p className="mt-2 text-slate-600">A few things I’ve worked on recently.</p>
+          <div className="mt-8 grid md:grid-cols-3 gap-6">
+            {projects.map((p) => (
+              <article key={p.title} className="rounded-2xl border bg-white p-6 shadow-sm flex flex-col">
+                <h3 className="font-semibold text-lg">{p.title}</h3>
+                <p className="mt-2 text-sm text-slate-600 flex-1">{p.description}</p>
+                <a
+                  href={p.link}
+                  className="mt-4 inline-block text-sm font-semibold hover:underline"
+                >
+                  View project →
+                </a>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-20">
+          <h2 className="text-2xl md:text-3xl font-bold">Contact</h2>
+          <p className="mt-2 text-slate-600">Say hello—let’s build something great.</p>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              alert("Thanks! This demo form doesn't send yet—hook it to your backend or a form service.");
+            }}
+            className="mt-6 grid gap-4 max-w-xl"
+          >
+            <input
+              required
+              placeholder="Your name"
+              className="rounded-xl border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-300"
+            />
+            <input
+              type="email"
+              required
+              placeholder="Email"
+              className="rounded-xl border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-300"
+            />
+            <textarea
+              required
+              placeholder="Message"
+              rows={5}
+              className="rounded-xl border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-300"
+            />
+            <button
+              type="submit"
+              className="rounded-2xl px-5 py-3 text-sm font-bold bg-slate-900 text-white hover:opacity-90"
+            >
+              Send message
+            </button>
+          </form>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t bg-slate-50">
+        <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-slate-500 flex flex-col md:flex-row items-center justify-between gap-3">
+          <p>© {new Date().getFullYear()} Matt Cornelius</p>
+          <div className="flex gap-4">
+            <a href="#" className="hover:underline">LinkedIn</a>
+            <a href="#" className="hover:underline">GitHub</a>
+            <a href="#" className="hover:underline">Email</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
